@@ -1,0 +1,17 @@
+{% extends 'master.html' %}
+
+{% block 'content' %}
+
+<h1>Recent Questions</h1>
+
+{% for q in questions|slice:':50' %}
+<div class="box">
+	<p>Posted in <a href="">{{ q.category.name }}</a></p>
+	<a href="{% url 'question' id=q.id slug=q.slug %}">
+		<h2 class="is-size-5 is-marginless">{{ q.question|safe|truncatewords:'50' }}</h2>
+	</a>	
+</div>
+{% endfor %}
+
+
+{% endblock %}

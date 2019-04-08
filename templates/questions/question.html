@@ -1,0 +1,23 @@
+{% extends 'master.html' %}
+
+{% block 'content' %}
+
+<div class="box">
+	<p class="is-uppercase is-marginless">Posted in <a href="">{{ question.category.name }}</a></p>
+	<h1>{{ question.question|safe }}</h1>	
+	{% for a in answers %}
+		<div class="content">
+			{{ a.answer|safe }}
+		</div>
+	{% endfor %}
+</div>
+
+
+
+<hr>
+
+{% for r in related|slice:':20' %}
+	<p>{{r.question}}<p>
+
+{% endfor %}
+{% endblock %}

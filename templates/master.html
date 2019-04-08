@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="has-navbar-fixed-top">
+<head>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block 'title' %}QUESTIONS{% endblock %}</title>
+    <meta name="description" content="{% block 'description' %}{% endblock %}">
+	<link href="https://fonts.googleapis.com/css?family=Titillium+Web:300,400,600,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link rel="canonical" href="{{request.build_absolute_uri}}" />
+    <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+	<link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="has-background-light">
+    {% include 'navbar.html' %}
+    {% block 'above-content' %}{% endblock %}
+    <div class="container">
+        <div class="content is-marginless">
+            <div class="columns is-desktop is-paddingless is-marginless">
+                <main class="column is-9-desktop is-marginless is-paddingless">
+                    <div class="section">
+                        {% block 'content' %}{% endblock %}
+                    </div>
+                </main>
+                <hr class="is-hidden-desktop">
+                <aside class="column is-3-desktop is-marginless is-paddingless">
+                    <div class="section">
+                        {% include 'aside.html' %}
+                        {% block 'sidebar' %}{% endblock %}
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer has-background-black has-text-centered">
+        <a class="is-size-3 has-text-white has-text-weight-bold is-uppercase" href="{% url 'index' %}">QUESTIONS</a>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    
+    {% block 'scripts' %}{% endblock %}
+</body>
+</html>
